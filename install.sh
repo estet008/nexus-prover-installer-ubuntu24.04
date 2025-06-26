@@ -39,7 +39,7 @@ FROM ubuntu:24.04
 RUN apt update && apt install -y \
     curl unzip ca-certificates \
     libssl-dev libcurl4-openssl-dev \
-    tzdata
+    tzdata bsdutils
 
 RUN useradd -ms /bin/bash prover
 
@@ -72,7 +72,7 @@ fi
 for i in {1..10}; do
   if [[ -x /home/prover/.nexus/bin/nexus-network ]]; then
     echo "✅ Знайдено nexus-network. Запуск..."
-    /home/prover/.nexus/bin/nexus-network start --node-id "\$NODE_ID_CLEAN"
+    script -q -c "/home/prover/.nexus/bin/nexus-network start --node-id \"\$NODE_ID_CLEAN\"" /dev/null
     exit \$?
   fi
   echo "🔄 Очікування появи nexus-network... Спроба \$i"
@@ -136,3 +136,4 @@ echo "🟢 Запуск:     sudo systemctl start $SERVICE_NAME"
 echo "🔴 Зупинка:    sudo systemctl stop $SERVICE_NAME"
 echo "♻️ Перезапуск: sudo systemctl restart $SERVICE_NAME"
 echo "🚫 Вимкнути автозапуск: sudo systemctl disable $SERVICE_NAME"
+
