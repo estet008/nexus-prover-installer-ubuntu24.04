@@ -31,11 +31,7 @@ sudo apt update && sudo apt upgrade -y
 ```bash
 sudo apt install -y docker.io
 sudo systemctl enable --now docker
-sudo usermod -aG docker $USER
-newgrp docker
 ```
-
-> ⚠️ Після додавання до групи `docker` рекомендовано перезайти в систему або виконати `newgrp docker`
 
 * 📦 **systemd** (встановлено за замовчуванням в Ubuntu 24.04)
 
@@ -78,14 +74,6 @@ newgrp docker
   ```bash
   sudo systemctl disable nexus-docker-prover
   ```
-
-## 📄 Логи
-
-Переглянути вивід процесу в реальному часі:
-
-```bash
-sudo docker logs -f nexus-instance
-```
 
 ## 🔄 Оновлення Nexus CLI (у Docker)
 
