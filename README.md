@@ -20,19 +20,17 @@
 
 Перед запуском скрипта обовʼязково встановіть:
 
-### Docker (якщо ще не встановлений):
+* Docker
 
-```bash
-sudo apt update
-sudo apt install -y docker.io
-sudo systemctl enable docker --now
-```
+  * Встановлення на Ubuntu:
 
-### Додатково (перевірка systemd, оновлення системи):
-
-```bash
-sudo apt update && sudo apt upgrade -y
-```
+    ```bash
+    sudo apt update
+    sudo apt install -y docker.io
+    sudo systemctl enable --now docker
+    ```
+  * Інструкція: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
+* systemd (передвстановлено у більшості версій Ubuntu)
 
 ## ⚙️ Встановлення Nexus Prover
 
@@ -80,6 +78,22 @@ sudo apt update && sudo apt upgrade -y
 
 ```bash
 sudo docker logs -f nexus-instance
+```
+
+## 🔄 Оновлення Nexus CLI
+
+Щоб оновити Nexus CLI до останньої версії, виконайте:
+
+```bash
+~/.nexus/bin/nexus-network self-update
+```
+
+## 🔍 Перевірка версії Nexus CLI
+
+Щоб перевірити поточну встановлену версію:
+
+```bash
+~/.nexus/bin/nexus-network --version
 ```
 
 ## ℹ️ Примітка
